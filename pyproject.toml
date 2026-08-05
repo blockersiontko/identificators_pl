@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pesel_validator_py"
+description = "Validate PESEL numbers with Python!"
+dynamic = ["version"]
+authors = [{name = "blockersiontko", email="i.settingidofirefox@gmail.com"}]
+keywords = ["CLI", "PESEL"]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = ["black"]
+
+[project.scripts]
+pesel = "pesel_validator.core:main"
+
+[tool.setuptools.packages.find]
+include = ["pesel_validator*"]
+
+[tool.setuptools.dynamic]
+version = {file = "VERSION.md"}
+
+[tool.black]
+line-length = 88
