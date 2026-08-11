@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 class PolishIdentificator(ABC):
 
     def __init__(self, number: str):
-        self.numer = number
+        self.number = number
 
     @abstractmethod
     def _checksum_valid(self) -> bool:
