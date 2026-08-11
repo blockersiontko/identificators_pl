@@ -1,6 +1,7 @@
 import datetime
 from polish_identificator import PolishIdentificator
 
+
 class PeselValidator(PolishIdentificator):
 
     WEIGHTS = (1, 3, 7, 9, 1, 3, 7, 9, 1, 3)
@@ -10,13 +11,7 @@ class PeselValidator(PolishIdentificator):
         month = int(self.number[2:4])
         day = int(self.number[4:6])
 
-        century_map = {
-            8: 1800,
-            0: 1900,
-            2: 2000,
-            4: 2100,
-            6: 2200
-        }
+        century_map = {8: 1800, 0: 1900, 2: 2000, 4: 2100, 6: 2200}
 
         century_digit = month // 20
         century = century_map[century_digit]

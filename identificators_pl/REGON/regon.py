@@ -1,6 +1,7 @@
 import datetime
 from polish_identificator import PolishIdentificator
 
+
 class REGONValidator(PolishIdentificator):
 
     def regon(self):

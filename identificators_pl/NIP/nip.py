@@ -1,6 +1,7 @@
 import datetime
 from polish_identificator import PolishIdentificator
 
+
 class NIPValidator(PolishIdentificator):
 
     def nip(self):

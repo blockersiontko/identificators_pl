@@ -1,17 +1,16 @@
 from abc import ABC, abstractmethod
 
+
 class PolishIdentificator(ABC):
 
     def __init__(self, number: str):
         self.number = number
 
     @abstractmethod
-    def _checksum_valid(self) -> bool:
-        ...
+    def _checksum_valid(self) -> bool: ...
 
     @abstractmethod
-    def _expected_length(self) -> int:
-        ...
+    def _expected_length(self) -> int: ...
 
     @property
     def is_valid(self) -> bool:
