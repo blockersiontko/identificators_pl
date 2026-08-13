@@ -1,7 +1,7 @@
-from polish_identificator import PolishIdentificator
+from ..identificator import Identificator
 
 
-class REGONValidator(PolishIdentificator):
+class REGONValidator(Identificator):
 
     WEIGHTS_9 = (8, 9, 2, 3, 4, 5, 6, 7)
     WEIGHTS_14 = (2, 4, 8, 5, 0, 9, 7, 3, 6, 1, 2, 4, 8)

@@ -1,8 +1,8 @@
 import datetime
-from polish_identificator import PolishIdentificator
+from ..identificator import Identificator
 
 
-class PeselValidator(PolishIdentificator):
+class PeselValidator(Identificator):
 
     WEIGHTS = (1, 3, 7, 9, 1, 3, 7, 9, 1, 3)
 

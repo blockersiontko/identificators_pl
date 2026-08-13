@@ -1,7 +1,7 @@
-from polish_identificator import PolishIdentificator
+from ..identificator import Identificator
 
 
-class NIPValidator(PolishIdentificator):
+class NIPValidator(Identificator):
 
     WEIGHTS = (6, 5, 7, 2, 3, 4, 5, 6, 7)
 

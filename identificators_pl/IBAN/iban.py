@@ -1,12 +1,17 @@
-from polish_identificator import PolishIdentificator
-from iban_length import COUNTRY_LENGTHS
+from ..identificator import Identificator
+from .iban_length import COUNTRY_LENGTHS
+from .sepa import SEPA_COUNTRIES
 
 
-class IBANValidator(PolishIdentificator):
+class IBANValidator(Identificator):
 
     @property
     def country_code(self) -> str:
         return self.number[:2].upper()
+    
+    @property
+    def check_sepa(self) -> bool:
+        return self.country_code in SEPA_COUNTRIES
 
     def _normalized_number(self) -> str:
         return self.number.upper().replace(" ", "")

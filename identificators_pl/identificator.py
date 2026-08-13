@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class PolishIdentificator(ABC):
+class Identificator(ABC):
 
     def __init__(self, number: str):
         self.number = number
