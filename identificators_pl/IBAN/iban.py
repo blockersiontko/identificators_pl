@@ -7,7 +7,7 @@ class IBANValidator(Identificator):
 
     @property
     def country_code(self) -> str:
-        return self.number[:2].upper()
+        return self._normalized_number()[:2]
     
     @property
     def check_sepa(self) -> bool:
@@ -17,6 +17,11 @@ class IBANValidator(Identificator):
         return self.number.upper().replace(" ", "")
 
     def _checksum_valid(self) -> bool:
+
+        expected_length = self._expected_length()
+        if expected_length == 0:
+            return False
+
         number = self._normalized_number()
         rearranged = number[4:] + number[:4]
 
@@ -31,10 +36,8 @@ class IBANValidator(Identificator):
 
         return int(numeric_string) % 97 == 1
 
-    def _expected_length(self) -> int:
-        try:
-            return COUNTRY_LENGTHS[self.country_code]
-        except KeyError:
-            raise ValueError(f"Unsupported IBAN country: {self.country_code}")
+    def _expected_length(self) -> tuple[int, ...]:
+        length = COUNTRY_LENGTHS.get(self.country_code)
+        return (length,) if length else ()
 
     # can add bban check in future

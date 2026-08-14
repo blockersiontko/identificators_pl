@@ -9,10 +9,13 @@ class REGONValidator(Identificator):
     def _checksum_valid(self):
         if not self.number.isdigit():
             return False
+        
         digits = [int(d) for d in self.number]
-        if len(self.number) == 9:
+        lengths = self._expected_length()
+
+        if len(self.number) == lengths[0]:
             checksum = sum(w * d for w, d in zip(self.WEIGHTS_9, digits[:-1])) % 11
-        elif len(self.number) == 14:
+        elif len(self.number) == lengths[1]:
             checksum = sum(w * d for w, d in zip(self.WEIGHTS_14, digits[:-1])) % 11
         else:
             return False

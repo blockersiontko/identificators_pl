@@ -13,4 +13,4 @@ class NIPValidator(Identificator):
             return checksum == digits[-1]
 
     def _expected_length(self):
-        return 10
+        return (10,)

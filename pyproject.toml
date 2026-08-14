@@ -3,29 +3,31 @@ requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pesel_validator_py"
-description = "Validate PESEL numbers with Python!"
+name = "identificators-pl"
+description = "Validate Polish identifiers (NIP, PESEL, REGON) and IBAN numbers"
 dynamic = ["version"]
-authors = [{name = "blockersiontko", email="i.settingidofirefox@gmail.com"}]
-keywords = ["CLI", "PESEL"]
+authors = [{name = "blockersiontko", email = "i.settingidofirefox@gmail.com"}]
+keywords = ["CLI", "PESEL", "NIP", "REGON", "IBAN", "validation"]
 requires-python = ">=3.11"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3.11",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 
 [project.optional-dependencies]
-dev = ["black"]
+dev = ["black", "pytest", "pytest-cov"]
 
 [project.scripts]
-pesel = "pesel_validator.core:main"
+identificators-pl = "identificators_pl.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/blockersiontko/identificators-pl"
 
 [tool.setuptools.packages.find]
-include = ["pesel_validator*"]
+include = ["identificators_pl*"]
 
 [tool.setuptools.dynamic]
 version = {file = "VERSION.md"}

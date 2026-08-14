@@ -11,14 +11,25 @@ class PeselValidator(Identificator):
         month = int(self.number[2:4])
         day = int(self.number[4:6])
 
-        century_map = {8: 1800, 0: 1900, 2: 2000, 4: 2100, 6: 2200}
-
-        century_digit = month // 20
-        century = century_map[century_digit]
-        real_month = month % 20
+        if 81 <= month <= 92:
+            century = 1800
+            month -= 80
+        elif 1 <= month <= 12:
+            century = 1900
+        elif 21 <= month <= 32:
+            century = 2000
+            month -= 20
+        elif 41 <= month <= 52:
+            century = 2100
+            month -= 40
+        elif 61 <= month <= 72:
+            century = 2200
+            month -= 60
+        else:
+            raise ValueError('Invalid PESEL month')
 
         full_year = century + year
-        return datetime.date(full_year, real_month, day)
+        return datetime.date(full_year, month, day)
 
     def check_birth_date(self) -> bool:
         todays_date = datetime.date.today()
@@ -39,4 +50,4 @@ class PeselValidator(Identificator):
         return control_digit == digits[10]
 
     def _expected_length(self) -> int:
-        return 11
+        return (11, )
