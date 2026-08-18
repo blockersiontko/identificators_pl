@@ -14,4 +14,4 @@ class Identificator(ABC):
 
     @property
     def is_valid(self) -> bool:
-        return len(self.number) == self._expected_length() and self._checksum_valid()
+        return len(self.number) in self._expected_length() and self._checksum_valid()

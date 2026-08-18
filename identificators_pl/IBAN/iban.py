@@ -19,11 +19,14 @@ class IBANValidator(Identificator):
     def _checksum_valid(self) -> bool:
 
         expected_length = self._expected_length()
-        if expected_length == 0:
-            return False
+        if not expected_length:
+            raise ValueError(f"Unsupported country code {self.country_code}")
 
         number = self._normalized_number()
         rearranged = number[4:] + number[:4]
+
+        if len(number) != expected_length[0]:
+                    return False
 
         numeric_string = ""
         for char in rearranged:
