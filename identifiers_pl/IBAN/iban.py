@@ -1,14 +1,14 @@
-from ..identificator import Identificator
+from ..identifier import Identifier
 from .iban_length import COUNTRY_LENGTHS
 from .sepa import SEPA_COUNTRIES
 
 
-class IBANValidator(Identificator):
+class IBANValidator(Identifier):
 
     @property
     def country_code(self) -> str:
         return self._normalized_number()[:2]
-    
+
     @property
     def check_sepa(self) -> bool:
         return self.country_code in SEPA_COUNTRIES

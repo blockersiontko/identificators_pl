@@ -2,8 +2,7 @@ import datetime
 
 import pytest
 
-from identificators_pl import PeselValidator
-
+from identifiers_pl import PeselValidator
 
 VALID_PESELS = [
     "44051401359",  # 1944-05-14
@@ -11,11 +10,11 @@ VALID_PESELS = [
 
 
 INVALID_FORMAT_OR_CHECKSUM = [
-    "44051401350",   # zła cyfra kontrolna (powinno być 9)
-    "4405140135",    # za krótki (10 znaków)
+    "44051401350",  # zła cyfra kontrolna (powinno być 9)
+    "4405140135",  # za krótki (10 znaków)
     "440514013599",  # za długi (12 znaków)
-    "4405140135X",   # nie same cyfry
-    "",               # pusty string
+    "4405140135X",  # nie same cyfry
+    "",  # pusty string
 ]
 
 
@@ -32,6 +31,7 @@ def test_invalid_format_or_checksum_pesel(pesel):
 def test_birth_date_parsed_correctly():
     v = PeselValidator("44051401359")
     assert v.birth_date() == datetime.date(1944, 5, 14)
+
 
 def test_2000s_birth_date_parses_correctly():
     v = PeselValidator("05252900000")

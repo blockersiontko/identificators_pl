@@ -1,8 +1,8 @@
 import datetime
-from ..identificator import Identificator
+from ..identifier import Identifier
 
 
-class PeselValidator(Identificator):
+class PeselValidator(Identifier):
 
     WEIGHTS = (1, 3, 7, 9, 1, 3, 7, 9, 1, 3)
 
@@ -26,7 +26,7 @@ class PeselValidator(Identificator):
             century = 2200
             month -= 60
         else:
-            raise ValueError('Invalid PESEL month')
+            raise ValueError("Invalid PESEL month")
 
         full_year = century + year
         return datetime.date(full_year, month, day)
@@ -49,5 +49,5 @@ class PeselValidator(Identificator):
         control_digit = (10 - checksum) % 10
         return control_digit == digits[10]
 
-    def _expected_length(self) -> int:
-        return (11, )
+    def _expected_length(self) -> tuple[int, ...]:
+        return (11,)

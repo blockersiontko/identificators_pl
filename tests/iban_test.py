@@ -1,7 +1,6 @@
 import pytest
 
-from identificators_pl import IBANValidator
-
+from identifiers_pl import IBANValidator
 
 VALID_IBANS = [
     "PL61109010140000071219812874",
@@ -14,7 +13,7 @@ INVALID_CHECKSUM_IBANS = [
 
 
 INVALID_LENGTH_IBANS = [
-    "PL6110901014000007121981287",   # o jeden znak za krótki
+    "PL6110901014000007121981287",  # o jeden znak za krótki
     "PL611090101400000712198128744",  # o jeden znak za długo
 ]
 
@@ -42,12 +41,12 @@ def test_country_code_is_uppercased():
 @pytest.mark.parametrize(
     "country, expected",
     [
-        ("PL", True),   # Polska jest w SEPA
+        ("PL", True),  # Polska jest w SEPA
         ("RU", False),  # Rosja ma zdefiniowaną długość, ale nie jest w SEPA
     ],
 )
 def test_check_sepa(country, expected):
-    from identificators_pl.IBAN.iban_length import COUNTRY_LENGTHS
+    from identifiers_pl.IBAN.iban_length import COUNTRY_LENGTHS
 
     length = COUNTRY_LENGTHS[country]
     fake_number = country + "00" + "0" * (length - 4)

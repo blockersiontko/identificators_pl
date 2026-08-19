@@ -3,7 +3,7 @@ requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "identificators-pl"
+name = "identifiers-pl"
 description = "Validate Polish identifiers (NIP, PESEL, REGON) and IBAN numbers"
 dynamic = ["version"]
 authors = [{name = "blockersiontko", email = "i.settingidofirefox@gmail.com"}]
@@ -21,13 +21,13 @@ classifiers = [
 dev = ["black", "pytest", "pytest-cov"]
 
 [project.scripts]
-identificators-pl = "identificators_pl.__main__:main"
+identifiers-pl = "identifiers_pl.__main__:main"
 
 [project.urls]
-Homepage = "https://github.com/blockersiontko/identificators-pl"
+Homepage = "https://github.com/blockersiontko/identifiers-pl"
 
 [tool.setuptools.packages.find]
-include = ["identificators_pl*"]
+include = ["identifiers_pl*"]
 
 [tool.setuptools.dynamic]
 version = {file = "VERSION.md"}

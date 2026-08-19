@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class Identificator(ABC):
+class Identifier(ABC):
 
     def __init__(self, number: str):
         self.number = number
@@ -19,4 +19,6 @@ class Identificator(ABC):
 
     @property
     def is_valid(self) -> bool:
-        return len(self._normalize()) in self._expected_length() and self._checksum_valid()
+        return (
+            len(self._normalize()) in self._expected_length() and self._checksum_valid()
+        )

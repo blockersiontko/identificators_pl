@@ -1,7 +1,6 @@
 import pytest
 
-from identificators_pl import NIPValidator
-
+from identifiers_pl import NIPValidator
 
 VALID_NIPS = [
     "5260001246",
@@ -9,10 +8,10 @@ VALID_NIPS = [
 
 
 INVALID_NIPS = [
-    "5260001240",   # zła cyfra kontrolna
-    "526000124",    # za krótki
+    "5260001240",  # zła cyfra kontrolna
+    "526000124",  # za krótki
     "52600012466",  # za długi
-    "526000124A",   # nie same cyfry
+    "526000124A",  # nie same cyfry
     "",
 ]
 
