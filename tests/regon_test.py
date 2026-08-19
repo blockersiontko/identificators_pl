@@ -16,22 +16,6 @@ INVALID_REGON = [
 ]
 
 
-# --- BUG ---------------------------------------------------------------
-# Identificator.is_valid porównuje `len(self.number) == self._expected_length()`.
-# REGONValidator._expected_length() zwraca krotkę (9, 14), więc porównanie
-# int == tuple jest ZAWSZE False -> is_valid zawsze zwraca False,
-# niezależnie od tego, czy numer jest poprawny.
-#
-# Testy poniżej są oznaczone jako xfail(strict=True): jeśli kiedyś
-# naprawisz `_expected_length`/`is_valid` (np. zmieniając porównanie na
-# `len(self.number) in self._expected_length()` albo nadpisując `is_valid`
-# w REGONValidator), test "unexpectedly passes" i pytest to zgłosi -
-# wtedy usuń marker xfail, bo błąd został naprawiony.
-@pytest.mark.xfail(
-    reason="BUG: REGONValidator._expected_length() zwraca tuple (9, 14), "
-    "a Identificator.is_valid porównuje int == tuple -> zawsze False",
-    strict=True,
-)
 @pytest.mark.parametrize("regon", VALID_REGON_9 + VALID_REGON_14)
 def test_valid_regon_is_valid(regon):
     assert REGONValidator(regon).is_valid is True

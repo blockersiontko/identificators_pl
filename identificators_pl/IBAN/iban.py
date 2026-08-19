@@ -16,17 +16,13 @@ class IBANValidator(Identificator):
     def _normalized_number(self) -> str:
         return self.number.upper().replace(" ", "")
 
-    def _checksum_valid(self) -> bool:
+    def _normalize(self) -> str:
+        return self._normalized_number()
 
-        expected_length = self._expected_length()
-        if not expected_length:
-            raise ValueError(f"Unsupported country code {self.country_code}")
+    def _checksum_valid(self) -> bool:
 
         number = self._normalized_number()
         rearranged = number[4:] + number[:4]
-
-        if len(number) != expected_length[0]:
-                    return False
 
         numeric_string = ""
         for char in rearranged:
@@ -41,6 +37,8 @@ class IBANValidator(Identificator):
 
     def _expected_length(self) -> tuple[int, ...]:
         length = COUNTRY_LENGTHS.get(self.country_code)
-        return (length,) if length else ()
+        if length is None:
+            raise ValueError(f"Unsupported country code {self.country_code}")
+        return (length,)
 
     # can add bban check in future

@@ -63,6 +63,6 @@ def test_unsupported_country_raises_instead_of_returning_false():
         IBANValidator("XX000000000000").is_valid
 
 
-def test_formatted_iban_with_spaces_is_incorrectly_rejected():
+def test_formatted_iban_with_spaces_is_accepted():
     formatted = "PL 61 1090 1014 0000 0712 1981 2874"
-    assert IBANValidator(formatted).is_valid is False  # oczekiwalibyśmy True
+    assert IBANValidator(formatted).is_valid is True
